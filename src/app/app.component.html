@@ -1,0 +1,50 @@
+
+<form  style="margin:2%" >
+    <mat-form-field  class="example-full-width" appearance="fill">
+        <mat-label>From</mat-label>
+
+      <input type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+              [(ngModel)]="fromValue">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option" >
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+<form  style="margin: 2%;" class="example-form">
+    <mat-form-field  class="example-full-width" appearance="fill">
+        <mat-label>To</mat-label>
+
+      <input type="text"
+              placeholder="Pick one"
+              aria-label="Number"
+              matInput
+              [formControl]="myControlTo"
+              [matAutocomplete]="auto"
+              [(ngModel)]="toValue">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option2 of filteredOptionsTo | async" [value]="option2">
+          {{option2}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+</form>
+
+<mat-form-field style="margin:2%" appearance="fill">
+    <mat-label>Amount</mat-label>
+    <input matInput [(ngModel)]="amountValue" type="number" >
+  </mat-form-field>
+
+  <button mat-button color="primary" (click)="exchangeCurrency()">Exchange</button>
+
+  <mat-label>Exchange {{amountValue}}{{fromValue}} to {{toValue}} is {{result}}</mat-label>
+
+        
+
